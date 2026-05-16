@@ -1,0 +1,21 @@
+{
+  "name": "nagos-ui-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "NagosUI — librairie de composants frontend premium animés + sites cinématiques",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "turbo": "^2",
+    "typescript": "^5"
+  }
+}
