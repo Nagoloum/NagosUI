@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@nagos/ui": "workspace:*",
+    "cmdk": "^1.1.1",
     "gsap": "^3.15.0",
     "lenis": "^1.3.23",
+    "lucide-react": "^1.16.0",
     "motion": "^12.38.0",
     "next": "^16.2.6",
+    "next-themes": "^0.4.6",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

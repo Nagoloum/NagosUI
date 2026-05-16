@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
-/* Foundation Layer NagosUI — source UNIQUE des tokens (design system). */
+/* Foundation Layer NagosUI — source UNIQUE des tokens (clair + sombre). */
 @import "../../../packages/ui/src/styles/theme.css";
 
 /* Modèle registry : scanne les classes des composants @nagos/ui. */
 @source "../../../packages/ui/src/**/*.{ts,tsx}";
 
-html {
-  color-scheme: dark;
-}
-
 html,
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
+}
+
+/* Transition douce lors du switch de thème. */
+body {
+  transition:
+    background-color 0.4s var(--ease-out-expo),
+    color 0.4s var(--ease-out-expo);
 }
 
 /* Recommandé par Lenis pour le smooth scroll. */

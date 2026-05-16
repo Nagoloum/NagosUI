@@ -1,42 +1,79 @@
 /**
- * NagosUI — Foundation Layer (tokens visuels).
- * Source UNIQUE du design system. Toute valeur visuelle vient d'ici ;
- * aucun composant ne doit hardcoder de couleur / ombre / rayon brut.
+ * NagosUI — Foundation Layer (tokens visuels, clair + sombre).
+ * Source UNIQUE du design system. Aucun composant n'hardcode de
+ * couleur / ombre / rayon brut — tout passe par un token.
  *
- * Tailwind v4 génère automatiquement les utilitaires depuis ces variables :
- *   --color-*  -> bg-* / text-* / border-* / ring-* / from-* …
- *   --radius-* -> rounded-*
- *   --shadow-* -> shadow-*
- *   --blur-*   -> blur-* / backdrop-blur-*
- *   --ease-*   -> ease-*
+ * Le thème est piloté par la classe `.dark` sur <html> (next-themes).
+ * `@theme inline` => les utilitaires Tailwind référencent les var()
+ * et réagissent donc au changement de thème en direct.
  */
-@theme {
-  /* ── Couleurs ───────────────────────────────────────────────── */
-  --color-bg: #05060a; /* fond cinématique profond */
-  --color-surface: rgba(255, 255, 255, 0.06); /* verre élevé */
-  --color-surface-hover: rgba(255, 255, 255, 0.1);
-  --color-fg: #e8e9f0; /* texte principal */
-  --color-muted: #9a9cae; /* texte secondaire */
-  --color-line: rgba(255, 255, 255, 0.14); /* bordures */
-  --color-line-strong: rgba(255, 255, 255, 0.3);
 
-  --color-accent: #7877c6; /* accent signature */
-  --color-accent-from: #6366f1; /* rampe dégradé */
+/* Variant `dark:` basé sur la classe .dark (et non prefers-color-scheme). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Thème CLAIR (défaut) ─────────────────────────────────────── */
+:root {
+  color-scheme: light;
+
+  --nagos-bg: #f6f6fb;
+  --nagos-surface: rgba(12, 12, 28, 0.04);
+  --nagos-surface-hover: rgba(12, 12, 28, 0.07);
+  --nagos-fg: #0c0c14;
+  --nagos-muted: #5a5c6b;
+  --nagos-line: rgba(12, 12, 28, 0.12);
+  --nagos-line-strong: rgba(12, 12, 28, 0.26);
+
+  --nagos-shadow-elevated: 0 10px 34px -12px rgba(20, 18, 60, 0.22);
+  --nagos-shadow-bright: 0 8px 30px -10px rgba(120, 119, 198, 0.4);
+}
+
+/* ── Thème SOMBRE (cinématique) ───────────────────────────────── */
+.dark {
+  color-scheme: dark;
+
+  --nagos-bg: #05060a;
+  --nagos-surface: rgba(255, 255, 255, 0.06);
+  --nagos-surface-hover: rgba(255, 255, 255, 0.1);
+  --nagos-fg: #e8e9f0;
+  --nagos-muted: #9a9cae;
+  --nagos-line: rgba(255, 255, 255, 0.14);
+  --nagos-line-strong: rgba(255, 255, 255, 0.3);
+
+  --nagos-shadow-elevated: 0 8px 30px -8px rgba(0, 0, 0, 0.6);
+  --nagos-shadow-bright: 0 8px 30px -8px rgba(255, 255, 255, 0.35);
+}
+
+@theme inline {
+  /* Couleurs theme-aware (suivent .dark) */
+  --color-bg: var(--nagos-bg);
+  --color-surface: var(--nagos-surface);
+  --color-surface-hover: var(--nagos-surface-hover);
+  --color-fg: var(--nagos-fg);
+  --color-muted: var(--nagos-muted);
+  --color-line: var(--nagos-line);
+  --color-line-strong: var(--nagos-line-strong);
+
+  /* Accent signature (identique clair/sombre) */
+  --color-accent: #7877c6;
+  --color-accent-from: #6366f1;
   --color-accent-via: #8b5cf6;
   --color-accent-to: #d946ef;
 
-  /* ── Rayons ─────────────────────────────────────────────────── */
+  /* Rayons */
   --radius-pill: 9999px;
   --radius-card: 1.5rem;
 
-  /* ── Ombres ─────────────────────────────────────────────────── */
-  --shadow-elevated: 0 8px 30px -8px rgba(0, 0, 0, 0.6);
-  --shadow-bright: 0 8px 30px -8px rgba(255, 255, 255, 0.35);
+  /* Ombres (theme-aware pour 2, fixe pour le glow) */
+  --shadow-elevated: var(--nagos-shadow-elevated);
+  --shadow-bright: var(--nagos-shadow-bright);
   --shadow-glow: 0 8px 30px -10px rgba(124, 58, 237, 0.7);
 
-  /* ── Flou (glass) ───────────────────────────────────────────── */
+  /* Flou glass */
   --blur-glass: 22px;
 
-  /* ── Easing signature (out-expo, feeling premium) ───────────── */
+  /* Easing signature (out-expo, feeling premium) */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Police : Outfit (next/font), repli système */
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
