@@ -1,35 +1,47 @@
 "use client";
 
 import { motion } from "motion/react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { MagneticButton } from "@nagos/ui";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
+const STATS = [
+  { value: "100%", label: "Ton code" },
+  { value: "Clair", label: "& Sombre" },
+  { value: "Motion", label: "+ GSAP" },
+];
+
 export function Hero() {
   return (
-    <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6">
-      {/* fond ambiant cinématique */}
+    <section
+      id="top"
+      className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 pt-16"
+    >
+      {/* fond ambiant cinématique (theme-aware) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/3 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(120,119,198,0.35),transparent_60%)] blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,6,10,0)_0%,rgba(5,6,10,0.92)_100%)]" />
+        <div className="absolute left-1/2 top-1/4 size-[55vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-accent)_38%,transparent),transparent_62%)] blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--color-bg)_92%,transparent))]" />
       </div>
 
-      <motion.span
+      <motion.a
+        href="#composants"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
-        className="mb-5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-white/70 backdrop-blur-xl"
+        className="mb-6 inline-flex items-center gap-2 rounded-pill border border-line bg-surface px-4 py-1.5 text-xs font-medium text-muted backdrop-blur-glass transition-colors hover:text-fg"
       >
-        NagosUI · v0.0.0
-      </motion.span>
+        <Sparkles className="size-3.5 text-accent" />
+        Design system + composants animés
+      </motion.a>
 
       <motion.h1
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.05, ease: EASE_OUT_EXPO }}
-        className="max-w-3xl text-balance text-center text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-7xl"
+        className="max-w-4xl text-center text-5xl font-semibold leading-[1.04] tracking-tight text-fg sm:text-7xl"
       >
         Des interfaces qui
-        <span className="bg-linear-to-r from-indigo-300 via-white to-violet-300 bg-clip-text text-transparent">
+        <span className="bg-linear-to-r from-accent-from via-accent-via to-accent-to bg-clip-text text-transparent">
           {" "}
           donnent envie
         </span>
@@ -39,10 +51,11 @@ export function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.15, ease: EASE_OUT_EXPO }}
-        className="mt-6 max-w-xl text-center text-base text-white/55 sm:text-lg"
+        className="mt-6 max-w-xl text-center text-base text-muted sm:text-lg"
       >
-        Composants premium animés, fluides et cinématiques. Survole le bouton —
-        il suit ton curseur.
+        NagosUI — une librairie de composants React premium, fluides et
+        cinématiques. Animations signature, clair/sombre natif, 100&nbsp;% ton
+        code.
       </motion.p>
 
       <motion.div
@@ -53,10 +66,25 @@ export function Hero() {
       >
         <MagneticButton variant="gradient" size="lg">
           Explorer les composants
+          <ArrowRight className="size-4" />
         </MagneticButton>
         <MagneticButton variant="outline" size="lg">
           Voir le code
         </MagneticButton>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.35, ease: EASE_OUT_EXPO }}
+        className="mt-16 flex items-center gap-8 sm:gap-12"
+      >
+        {STATS.map((s) => (
+          <div key={s.label} className="text-center">
+            <div className="text-2xl font-semibold text-fg">{s.value}</div>
+            <div className="text-xs tracking-wide text-muted">{s.label}</div>
+          </div>
+        ))}
       </motion.div>
     </section>
   );
