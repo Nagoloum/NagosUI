@@ -54,11 +54,11 @@ export const MagneticButton = React.forwardRef<
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-white/25 via-transparent to-white/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-fg/25 via-transparent to-fg/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
       <span
         aria-hidden
-        className="pointer-events-none absolute -inset-px -z-10 rounded-full bg-[radial-gradient(140px_circle_at_50%_120%,rgba(120,119,198,0.55),transparent)] opacity-50 blur-md transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px -z-10 rounded-pill bg-[radial-gradient(140px_circle_at_50%_120%,color-mix(in_oklab,var(--color-accent)_55%,transparent),transparent)] opacity-50 blur-md transition-opacity duration-500 group-hover:opacity-100"
       />
       <span className="relative z-10 inline-flex items-center gap-2">
         {children}

@@ -5,7 +5,7 @@ Monorepo géré par **pnpm workspaces** + **Turborepo**.
 
 ## Stack
 
-- **Next.js 15** (App Router) + **React 19** + **TypeScript**
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS v4** (config CSS-first)
 - **Motion** (ex Framer Motion) — animations UI / micro-interactions
 - **GSAP** + **ScrollTrigger** — scroll cinématique / timelines
@@ -16,10 +16,31 @@ Monorepo géré par **pnpm workspaces** + **Turborepo**.
 ```
 NagosUI/
 ├── apps/
-│   └── showcase/      # Site vitrine / playground (déployable sur Vercel)
+│   └── showcase/             # Site vitrine / playground (déployable Vercel)
 └── packages/
-    └── ui/            # @nagos/ui — composants (modèle registry, code copiable)
+    └── ui/                   # @nagos/ui — design system + composants
+        └── src/
+            ├── styles/       #   theme.css   → tokens visuels (@theme)
+            ├── tokens/       #   motion.ts    → tokens motion (EASE/SPRING)
+            ├── lib/          #   cn()
+            ├── hooks/        #   useMagnetic…
+            └── components/   #   button/, … (1 dossier par catégorie)
 ```
+
+## Foundation Layer (design system)
+
+Source **unique** de toute valeur visuelle — aucun composant n'hardcode de
+couleur / ombre / rayon / easing :
+
+- **`packages/ui/src/styles/theme.css`** — tokens visuels via `@theme`
+  Tailwind v4 (`--color-*`, `--radius-*`, `--shadow-*`, `--blur-*`,
+  `--ease-*`). Génère les utilitaires (`bg-surface`, `rounded-pill`,
+  `shadow-glow`, `ease-out-expo`…).
+- **`packages/ui/src/tokens/motion.ts`** — tokens motion JS (`EASE`,
+  `SPRING`, `DURATION`) pour Motion / GSAP.
+
+Une app branche le système en important `theme.css` dans son `globals.css`.
+Changer un token = changer toute la DA d'un coup.
 
 Le modèle de distribution est **façon shadcn** : `@nagos/ui` est consommé en
 dépendance workspace (code source transpilé par l'app), tu possèdes 100 % du

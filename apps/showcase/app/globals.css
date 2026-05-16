@@ -1,13 +1,10 @@
 @import "tailwindcss";
 
-/* Modèle registry : scanne aussi les composants du package @nagos/ui. */
-@source "../../../packages/ui/src/**/*.{ts,tsx}";
+/* Foundation Layer NagosUI — source UNIQUE des tokens (design system). */
+@import "../../../packages/ui/src/styles/theme.css";
 
-@theme {
-  --color-nagos-bg: #05060a;
-  --color-nagos-fg: #e7e8ee;
-  --color-nagos-accent: #7877c6;
-}
+/* Modèle registry : scanne les classes des composants @nagos/ui. */
+@source "../../../packages/ui/src/**/*.{ts,tsx}";
 
 html {
   color-scheme: dark;
@@ -15,8 +12,8 @@ html {
 
 html,
 body {
-  background-color: var(--color-nagos-bg);
-  color: var(--color-nagos-fg);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
 }
 
 /* Recommandé par Lenis pour le smooth scroll. */

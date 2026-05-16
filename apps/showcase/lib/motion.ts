@@ -1,9 +1,8 @@
 import type { Variants } from "motion/react";
+import { EASE } from "@nagos/ui";
 
-/** Easing signature NagosUI (out-expo) — feeling premium / Apple-like. */
-export const EASE_OUT_EXPO: [number, number, number, number] = [
-  0.16, 1, 0.3, 1,
-];
+/** Easing signature NagosUI — vient du Foundation Layer (@nagos/ui). */
+export const EASE_OUT_EXPO = EASE.outExpo;
 
 /** Apparition fade + translation vers le haut. */
 export const fadeUp: Variants = {

@@ -2,28 +2,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 /**
  * Source unique des styles de bouton (partagée par `Button` et
- * `MagneticButton`). Ajoute un variant/size ici → dispo partout.
+ * `MagneticButton`). 100 % basée sur les tokens du Foundation Layer
+ * (theme.css) — aucune valeur brute. Ajoute un variant/size ici → dispo
+ * partout.
  */
 export const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full",
-    "font-medium select-none outline-none cursor-pointer",
-    "transition-[color,background-color,box-shadow,transform,border-color] duration-300",
-    "focus-visible:ring-2 focus-visible:ring-white/40",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-pill",
+    "font-medium select-none cursor-pointer outline-none",
+    "transition-[color,background-color,box-shadow,transform,border-color] duration-300 ease-out-expo",
+    "focus-visible:ring-2 focus-visible:ring-accent/50",
     "disabled:pointer-events-none disabled:opacity-50",
   ],
   {
     variants: {
       variant: {
         primary:
-          "bg-white text-black hover:bg-white/90 active:scale-[0.98] shadow-[0_8px_30px_-8px_rgba(255,255,255,0.35)]",
+          "bg-fg text-bg hover:opacity-90 active:scale-[0.98] shadow-bright",
         glass:
-          "border border-white/15 bg-white/10 text-white backdrop-blur-xl hover:bg-white/15 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.6)]",
+          "border border-line bg-surface text-fg backdrop-blur-glass hover:bg-surface-hover shadow-elevated",
         gradient:
-          "text-white bg-linear-to-r from-indigo-500 via-violet-500 to-fuchsia-500 hover:brightness-110 shadow-[0_8px_30px_-10px_rgba(124,58,237,0.7)]",
+          "text-fg bg-linear-to-r from-accent-from via-accent-via to-accent-to hover:brightness-110 shadow-glow",
         outline:
-          "border border-white/20 text-white hover:bg-white/5 hover:border-white/35",
-        ghost: "text-white/70 hover:text-white hover:bg-white/5",
+          "border border-line text-fg hover:bg-surface hover:border-line-strong",
+        ghost: "text-muted hover:text-fg hover:bg-surface",
       },
       size: {
         sm: "h-9 px-4 text-xs",

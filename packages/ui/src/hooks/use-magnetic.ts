@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useMotionValue, useSpring, type MotionValue } from "motion/react";
+import { SPRING } from "../tokens/motion";
 
 export interface UseMagneticOptions {
   /** Distance max (px) dont l'élément est attiré vers le curseur. */
@@ -33,9 +34,8 @@ export function useMagnetic<T extends HTMLElement>(
   const ref = React.useRef<T | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const config = { stiffness: 220, damping: 18, mass: 0.6 };
-  const springX = useSpring(x, config);
-  const springY = useSpring(y, config);
+  const springX = useSpring(x, SPRING.snappy);
+  const springY = useSpring(y, SPRING.snappy);
 
   const reset = React.useCallback(() => {
     x.set(0);
