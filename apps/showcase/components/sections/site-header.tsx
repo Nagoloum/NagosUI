@@ -51,9 +51,11 @@ export function SiteHeader() {
               width={28}
               height={28}
               priority
-              className="rounded-lg"
+              className="rounded-lg brightness-0 dark:brightness-100"
             />
-            Nagos<span className="text-accent">UI</span>
+            <div className="gap-0.5 flex">
+              Nagos<span className="text-accent">UI</span>
+            </div>
           </a>
 
           {/* Nav */}

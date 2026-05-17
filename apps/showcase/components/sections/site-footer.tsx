@@ -12,7 +12,7 @@ export function SiteFooter() {
             alt="NagosUI"
             width={24}
             height={24}
-            className="rounded-md"
+            className="rounded-md brightness-0 dark:brightness-100"
           />
           Nagos<span className="text-accent">UI</span>
         </div>
