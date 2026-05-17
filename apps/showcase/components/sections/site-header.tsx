@@ -6,16 +6,22 @@ import { Code2, Search } from "lucide-react";
 import { cn } from "@nagos/ui";
 import { Logo } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { LanguageToggle } from "@/components/ui/language-toggle";
 import { CommandMenu } from "@/components/ui/command-menu";
+import { useI18n } from "@/components/providers/language-provider";
 
 const NAV = [
-  { label: "Composants", id: "composants" },
-  { label: "Pourquoi", id: "features" },
-];
+  { key: "docs", href: "/docs" },
+  { key: "composants", href: "/#composants" },
+  { key: "icons", href: "/icons" },
+  { key: "blocks", href: "/blocks" },
+  { key: "templates", href: "/templates" },
+] as const;
 
 const GITHUB_URL = "https://github.com/Nagoloum/NagosUI";
 
 export function SiteHeader() {
+  const { t } = useI18n();
   const [cmdOpen, setCmdOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -42,24 +48,24 @@ export function SiteHeader() {
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-6">
           {/* Brand */}
           <a
-            href="#top"
+            href="/"
             className="flex items-center gap-2 text-base font-semibold tracking-tight text-fg"
           >
             <Logo size={28} priority className="rounded-lg" />
-            <div className="gap-0.5 flex">
+            <div className="flex gap-0.5">
               Nagos<span className="text-accent">UI</span>
             </div>
           </a>
 
           {/* Nav */}
-          <nav className="ml-4 hidden items-center gap-1 md:flex">
+          <nav className="ml-4 hidden items-center gap-1 lg:flex">
             {NAV.map((item) => (
               <a
-                key={item.id}
-                href={`#${item.id}`}
+                key={item.key}
+                href={item.href}
                 className="rounded-pill px-3 py-1.5 text-sm text-muted transition-colors hover:bg-surface hover:text-fg"
               >
-                {item.label}
+                {t.nav[item.key]}
               </a>
             ))}
           </nav>
@@ -68,15 +74,16 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setCmdOpen(true)}
-            className="ml-auto flex h-9 items-center gap-2 rounded-pill border border-line bg-surface px-3 text-sm text-muted transition-colors hover:bg-surface-hover sm:w-64"
+            className="ml-auto flex h-9 items-center gap-2 rounded-pill border border-line bg-surface px-3 text-sm text-muted transition-colors hover:bg-surface-hover sm:w-56"
           >
             <Search className="size-4" />
-            <span className="hidden sm:inline">Rechercher…</span>
+            <span className="hidden sm:inline">{t.header.search}</span>
             <kbd className="ml-auto hidden items-center gap-0.5 rounded-md border border-line px-1.5 py-0.5 text-[10px] sm:flex">
               ⌘K
             </kbd>
           </button>
 
+          <LanguageToggle />
           <ThemeToggle />
 
           <a
@@ -84,7 +91,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noreferrer noopener"
             aria-label="GitHub"
-            className="grid size-9 place-items-center rounded-pill border border-line bg-surface text-fg transition-colors hover:bg-surface-hover"
+            className="hidden size-9 place-items-center rounded-pill border border-line bg-surface text-fg transition-colors hover:bg-surface-hover sm:grid"
           >
             <Code2 className="size-4.5" />
           </a>

@@ -11,36 +11,41 @@
 /* Variant `dark:` basé sur la classe .dark (et non prefers-color-scheme). */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Thème CLAIR (défaut) ─────────────────────────────────────── */
+/* ── Thème CLAIR (défaut) — sobre mais premium ────────────────── */
 :root {
   color-scheme: light;
 
-  --nagos-bg: #f6f6fb;
-  --nagos-surface: rgba(12, 12, 28, 0.04);
-  --nagos-surface-hover: rgba(12, 12, 28, 0.07);
-  --nagos-fg: #0c0c14;
-  --nagos-muted: #5a5c6b;
-  --nagos-line: rgba(12, 12, 28, 0.12);
-  --nagos-line-strong: rgba(12, 12, 28, 0.26);
+  --nagos-bg: #f7f7fb;
+  --nagos-surface: rgba(14, 14, 34, 0.045);
+  --nagos-surface-hover: rgba(14, 14, 34, 0.08);
+  --nagos-fg: #0b0b13;
+  --nagos-muted: #565a6c;
+  --nagos-line: rgba(14, 14, 34, 0.1);
+  --nagos-line-strong: rgba(14, 14, 34, 0.22);
 
-  --nagos-shadow-elevated: 0 10px 34px -12px rgba(20, 18, 60, 0.22);
-  --nagos-shadow-bright: 0 8px 30px -10px rgba(120, 119, 198, 0.4);
+  --nagos-shadow-elevated: 0 12px 38px -14px rgba(20, 18, 60, 0.2);
+  --nagos-shadow-bright: 0 10px 32px -12px rgba(120, 119, 198, 0.45);
+
+  /* Intensité de l'ambiance accent (fond) */
+  --nagos-ambient: 8%;
 }
 
 /* ── Thème SOMBRE (cinématique) ───────────────────────────────── */
 .dark {
   color-scheme: dark;
 
-  --nagos-bg: #05060a;
-  --nagos-surface: rgba(255, 255, 255, 0.06);
-  --nagos-surface-hover: rgba(255, 255, 255, 0.1);
-  --nagos-fg: #e8e9f0;
-  --nagos-muted: #9a9cae;
-  --nagos-line: rgba(255, 255, 255, 0.14);
-  --nagos-line-strong: rgba(255, 255, 255, 0.3);
+  --nagos-bg: #050609;
+  --nagos-surface: rgba(255, 255, 255, 0.055);
+  --nagos-surface-hover: rgba(255, 255, 255, 0.09);
+  --nagos-fg: #eceef5;
+  --nagos-muted: #9b9eb2;
+  --nagos-line: rgba(255, 255, 255, 0.12);
+  --nagos-line-strong: rgba(255, 255, 255, 0.26);
 
-  --nagos-shadow-elevated: 0 8px 30px -8px rgba(0, 0, 0, 0.6);
-  --nagos-shadow-bright: 0 8px 30px -8px rgba(255, 255, 255, 0.35);
+  --nagos-shadow-elevated: 0 10px 34px -8px rgba(0, 0, 0, 0.65);
+  --nagos-shadow-bright: 0 8px 30px -8px rgba(255, 255, 255, 0.3);
+
+  --nagos-ambient: 22%;
 }
 
 @theme inline {

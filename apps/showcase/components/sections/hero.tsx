@@ -4,18 +4,15 @@ import { motion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { MagneticButton } from "@nagos/ui";
 import { EASE_OUT_EXPO } from "@/lib/motion";
-
-const STATS = [
-  { value: "100%", label: "Ton code" },
-  { value: "Clair", label: "& Sombre" },
-  { value: "Motion", label: "+ GSAP" },
-];
+import { useI18n } from "@/components/providers/language-provider";
 
 export function Hero() {
+  const { t } = useI18n();
+
   return (
     <section
       id="top"
-      className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 pt-16"
+      className="relative flex min-h-75 flex-col items-center justify-center overflow-hidden px-6 pt-16"
     >
       {/* fond ambiant cinématique (theme-aware) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -31,7 +28,7 @@ export function Hero() {
         className="mb-6 inline-flex items-center gap-2 rounded-pill border border-line bg-surface px-4 py-1.5 text-xs font-medium text-muted backdrop-blur-glass transition-colors hover:text-fg"
       >
         <Sparkles className="size-3.5 text-accent" />
-        Design system + composants animés
+        {t.hero.badge}
       </motion.a>
 
       <motion.h1
@@ -40,10 +37,10 @@ export function Hero() {
         transition={{ duration: 0.9, delay: 0.05, ease: EASE_OUT_EXPO }}
         className="max-w-4xl text-center text-5xl font-semibold leading-[1.04] tracking-tight text-fg sm:text-7xl"
       >
-        Des interfaces qui
+        {t.hero.titleLead}
         <span className="bg-linear-to-r from-accent-from via-accent-via to-accent-to bg-clip-text text-transparent">
           {" "}
-          donnent envie
+          {t.hero.titleAccent}
         </span>
       </motion.h1>
 
@@ -53,9 +50,7 @@ export function Hero() {
         transition={{ duration: 0.9, delay: 0.15, ease: EASE_OUT_EXPO }}
         className="mt-6 max-w-xl text-center text-base text-muted sm:text-lg"
       >
-        NagosUI — une librairie de composants React premium, fluides et
-        cinématiques. Animations signature, clair/sombre natif, 100&nbsp;% ton
-        code.
+        {t.hero.subtitle}
       </motion.p>
 
       <motion.div
@@ -65,11 +60,11 @@ export function Hero() {
         className="mt-10 flex flex-wrap items-center justify-center gap-4"
       >
         <MagneticButton variant="gradient" size="lg">
-          Explorer les composants
+          {t.hero.ctaPrimary}
           <ArrowRight className="size-4" />
         </MagneticButton>
         <MagneticButton variant="outline" size="lg">
-          Voir le code
+          {t.hero.ctaSecondary}
         </MagneticButton>
       </motion.div>
 
@@ -79,8 +74,8 @@ export function Hero() {
         transition={{ duration: 0.9, delay: 0.35, ease: EASE_OUT_EXPO }}
         className="mt-16 flex items-center gap-8 sm:gap-12"
       >
-        {STATS.map((s) => (
-          <div key={s.label} className="text-center">
+        {t.hero.stats.map((s, i) => (
+          <div key={i} className="text-center">
             <div className="text-2xl font-semibold text-fg">{s.value}</div>
             <div className="text-xs tracking-wide text-muted">{s.label}</div>
           </div>
