@@ -41,6 +41,29 @@ body::before {
   transition: background 0.4s var(--ease-out-expo);
 }
 
+/* ── Transition de thème : reveal circulaire (View Transitions API) ──
+   On neutralise le cross-fade par défaut ; le cercle est animé en JS
+   sur ::view-transition-new(root) depuis le bouton de thème. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* Recommandé par Lenis pour le smooth scroll. */
 html.lenis,
 html.lenis body {

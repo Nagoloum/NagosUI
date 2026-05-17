@@ -8,7 +8,7 @@ const GITHUB_URL = "https://github.com/Nagoloum/NagosUI";
 export function SiteFooter() {
   const { t } = useI18n();
 
-  return (
+  return ( 
     <footer className="border-t border-line px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-sm font-semibold tracking-tight text-fg">

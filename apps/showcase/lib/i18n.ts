@@ -57,52 +57,52 @@ const fr: Dict = {
   },
   header: { search: "Rechercher…" },
   hero: {
-    badge: "Design system + composants animés",
-    titleLead: "Des interfaces qui",
-    titleAccent: "donnent envie",
+    badge: "Librairie de composants React · open source",
+    titleLead: "Des interfaces premium,",
+    titleAccent: "livrées plus vite",
     subtitle:
-      "NagosUI — une librairie de composants React premium, fluides et cinématiques. Animations signature, clair/sombre natif, 100 % ton code.",
+      "NagosUI est une librairie de composants React animés, bâtie sur un design system tokenisé. Vous gardez 100 % du code et gagnez des semaines d'intégration sur chaque produit.",
     ctaPrimary: "Explorer les composants",
     ctaSecondary: "Commencer",
     stats: [
-      { value: "100%", label: "Ton code" },
-      { value: "Clair", label: "& Sombre" },
-      { value: "Motion", label: "+ GSAP" },
+      { value: "100 %", label: "Votre code" },
+      { value: "Clair / Sombre", label: "Natif" },
+      { value: "Motion", label: "Intégré" },
     ],
   },
   features: {
     eyebrow: "Pourquoi NagosUI",
-    title: "Conçu pour des UI mémorables",
+    title: "La base technique d'un produit qui se démarque",
     items: [
       {
-        title: "Animations signature",
-        desc: "Micro-interactions, magnétisme, reveals au scroll — un feeling reconnaissable.",
+        title: "Animations de production",
+        desc: "Micro-interactions et transitions calibrées, fluides et performantes — la signature visuelle, sans la dette technique.",
       },
       {
-        title: "Clair / sombre natif",
-        desc: "Un seul jeu de tokens bascule toute la DA. Aucun composant à retoucher.",
+        title: "Thème clair / sombre natif",
+        desc: "Un seul jeu de tokens pilote toute l'identité. Aucun composant à dupliquer ni à retoucher.",
       },
       {
-        title: "100 % ton code",
-        desc: "Modèle registry : tu possèdes chaque composant, customisable à fond.",
+        title: "Vous possédez le code",
+        desc: "Modèle registry : les composants vivent dans votre dépôt. Aucun lock-in, customisation totale.",
       },
       {
-        title: "Design system par tokens",
-        desc: "Couleurs, ombres, rayons, easing : une source unique, zéro valeur brute.",
+        title: "Design system tokenisé",
+        desc: "Couleurs, ombres, rayons, easing : une source unique de vérité, cohérente sur tout le produit.",
       },
       {
-        title: "Motion · GSAP · Lenis",
-        desc: "La stack des sites premium, déjà câblée et prête à l'emploi.",
+        title: "Stack premium intégrée",
+        desc: "Motion, GSAP et Lenis déjà câblés et typés. Vous construisez, l'infrastructure est prête.",
       },
       {
-        title: "Prêt pour Vercel",
-        desc: "Monorepo Turborepo, Next.js 16, build vérifié. Déploiement immédiat.",
+        title: "Prêt pour la production",
+        desc: "TypeScript strict, Next.js 16, monorepo Turborepo, build vérifié. Déployable sur Vercel immédiatement.",
       },
     ],
   },
-  footer: { tagline: "Par Nagos" },
+  footer: { tagline: "Conçu par Nagos" },
   command: {
-    placeholder: "Rechercher un composant, une section…",
+    placeholder: "Rechercher un composant, une page…",
     empty: "Aucun résultat.",
     groupNav: "Navigation",
     groupTheme: "Thème",
@@ -115,9 +115,9 @@ const fr: Dict = {
   },
   comingSoon: {
     badge: "Bientôt",
-    title: "Cette section arrive",
+    title: "Bientôt disponible",
     subtitle:
-      "Elle est en cours de construction. Reviens vite — ou explore les composants en attendant.",
+      "Cette section est en cours de finalisation. En attendant, explorez les composants disponibles.",
     back: "Retour à l'accueil",
   },
 };
@@ -132,52 +132,52 @@ const en: Dict = {
   },
   header: { search: "Search…" },
   hero: {
-    badge: "Design system + animated components",
-    titleLead: "Interfaces that",
-    titleAccent: "make you want more",
+    badge: "React component library · open source",
+    titleLead: "Premium interfaces,",
+    titleAccent: "shipped faster",
     subtitle:
-      "NagosUI — a premium, fluid and cinematic React component library. Signature animations, native light/dark, 100% your code.",
+      "NagosUI is an animated React component library built on a tokenized design system. You keep 100% of the code and save weeks of integration on every product.",
     ctaPrimary: "Explore components",
     ctaSecondary: "Get started",
     stats: [
       { value: "100%", label: "Your code" },
-      { value: "Light", label: "& Dark" },
-      { value: "Motion", label: "+ GSAP" },
+      { value: "Light / Dark", label: "Native" },
+      { value: "Motion", label: "Built-in" },
     ],
   },
   features: {
     eyebrow: "Why NagosUI",
-    title: "Built for memorable UIs",
+    title: "The technical foundation of a product that stands out",
     items: [
       {
-        title: "Signature animations",
-        desc: "Micro-interactions, magnetism, scroll reveals — a recognizable feel.",
+        title: "Production-grade motion",
+        desc: "Calibrated micro-interactions and transitions, smooth and performant — the visual signature, without the tech debt.",
       },
       {
         title: "Native light / dark",
-        desc: "A single token set flips the whole look. No component to touch.",
+        desc: "A single token set drives the whole identity. No component to duplicate or rework.",
       },
       {
-        title: "100% your code",
-        desc: "Registry model: you own every component, fully customizable.",
+        title: "You own the code",
+        desc: "Registry model: components live in your repo. Zero lock-in, full customization.",
       },
       {
-        title: "Token design system",
-        desc: "Colors, shadows, radii, easing: one source of truth, zero raw values.",
+        title: "Tokenized design system",
+        desc: "Colors, shadows, radii, easing: one source of truth, consistent across the product.",
       },
       {
-        title: "Motion · GSAP · Lenis",
-        desc: "The premium-site stack, already wired and ready to use.",
+        title: "Premium stack, wired in",
+        desc: "Motion, GSAP and Lenis already wired and typed. You build; the infrastructure is ready.",
       },
       {
-        title: "Vercel-ready",
-        desc: "Turborepo monorepo, Next.js 16, verified build. Deploy instantly.",
+        title: "Production-ready",
+        desc: "Strict TypeScript, Next.js 16, Turborepo monorepo, verified build. Deployable on Vercel right away.",
       },
     ],
   },
-  footer: { tagline: "By Nagos" },
+  footer: { tagline: "Built by Nagos" },
   command: {
-    placeholder: "Search a component, a section…",
+    placeholder: "Search a component, a page…",
     empty: "No results.",
     groupNav: "Navigation",
     groupTheme: "Theme",
@@ -190,9 +190,9 @@ const en: Dict = {
   },
   comingSoon: {
     badge: "Soon",
-    title: "This section is coming",
+    title: "Coming soon",
     subtitle:
-      "It's under construction. Check back soon — or explore the components meanwhile.",
+      "This section is being finalized. In the meantime, explore the available components.",
     back: "Back to home",
   },
 };
