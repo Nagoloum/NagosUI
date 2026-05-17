@@ -34,3 +34,9 @@ export function docTitle(item: DocNavItem, lang: Lang): string {
 export function findDoc(slug: string): DocNavItem | undefined {
   return DOCS_NAV.find((d) => d.slug === slug);
 }
+
+/** Déduit le slug docs courant depuis le pathname (/docs ou /docs/x). */
+export function slugFromPathname(pathname: string): string {
+  const m = pathname.replace(/\/+$/, "").match(/^\/docs(?:\/([^/]+))?$/);
+  return m?.[1] ?? DOCS_HOME_SLUG;
+}

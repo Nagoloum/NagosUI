@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { cn } from "@nagos/ui";
 import type { Lang } from "@/lib/i18n";
 import { docsUi } from "@/lib/docs-content";
@@ -39,28 +40,41 @@ export function DocsToc({
       <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted">
         {docsUi[lang].onThisPage}
       </p>
-      <ul className="border-l border-line">
-        {items.map((it) => (
-          <li key={it.id}>
-            <a
-              href={`#${it.id}`}
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById(it.id)
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className={cn(
-                "-ml-px block border-l py-1.5 pl-4 transition-colors",
-                active === it.id
-                  ? "border-accent text-fg"
-                  : "border-transparent text-muted hover:text-fg",
+      <ul className="relative border-l border-line">
+        {items.map((it) => {
+          const isActive = active === it.id;
+          return (
+            <li key={it.id} className="relative">
+              {isActive && (
+                <motion.span
+                  layoutId="docs-toc-active"
+                  className="absolute -left-px top-0 h-full w-0.5 rounded-full bg-accent"
+                  transition={{
+                    type: "spring",
+                    stiffness: 420,
+                    damping: 38,
+                    mass: 0.8,
+                  }}
+                />
               )}
-            >
-              {it.label}
-            </a>
-          </li>
-        ))}
+              <a
+                href={`#${it.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById(it.id)
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className={cn(
+                  "relative block py-1.5 pl-4 transition-colors duration-300",
+                  isActive ? "text-fg" : "text-muted hover:text-fg",
+                )}
+              >
+                {it.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
