@@ -17,7 +17,7 @@ export function SiteFooter() {
         </div>
 
         <nav className="flex items-center gap-6 text-sm text-muted">
-          <a className="transition-colors hover:text-fg" href="/#composants">
+          <a className="transition-colors hover:text-fg" href="/composants">
             {t.nav.composants}
           </a>
           <a className="transition-colors hover:text-fg" href="/#features">

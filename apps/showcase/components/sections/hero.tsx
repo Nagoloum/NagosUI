@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { MagneticButton } from "@nagos/ui";
@@ -8,6 +9,7 @@ import { useI18n } from "@/components/providers/language-provider";
 
 export function Hero() {
   const { t } = useI18n();
+  const router = useRouter();
 
   return (
     <section
@@ -21,7 +23,7 @@ export function Hero() {
       </div>
 
       <motion.a
-        href="#composants"
+        href="/composants"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
@@ -59,11 +61,19 @@ export function Hero() {
         transition={{ duration: 0.9, delay: 0.25, ease: EASE_OUT_EXPO }}
         className="mt-10 flex flex-wrap items-center justify-center gap-4"
       >
-        <MagneticButton variant="gradient" size="lg">
+        <MagneticButton
+          variant="gradient"
+          size="lg"
+          onClick={() => router.push("/composants")}
+        >
           {t.hero.ctaPrimary}
           <ArrowRight className="size-4" />
         </MagneticButton>
-        <MagneticButton variant="outline" size="lg">
+        <MagneticButton
+          variant="outline"
+          size="lg"
+          onClick={() => router.push("/docs")}
+        >
           {t.hero.ctaSecondary}
         </MagneticButton>
       </motion.div>

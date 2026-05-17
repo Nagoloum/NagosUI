@@ -98,7 +98,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                   <Item
                     onSelect={() =>
                       run(() => {
-                        window.location.href = "/#composants";
+                        window.location.href = "/composants";
                       })
                     }
                     icon={<Component className="size-4" />}

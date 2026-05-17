@@ -12,7 +12,7 @@ import { useI18n } from "@/components/providers/language-provider";
 
 const NAV = [
   { key: "docs", href: "/docs" },
-  { key: "composants", href: "/#composants" },
+  { key: "composants", href: "/composants" },
   { key: "icons", href: "/icons" },
   { key: "blocks", href: "/blocks" },
   { key: "templates", href: "/templates" },
@@ -77,9 +77,10 @@ export function SiteHeader() {
             className="ml-auto flex h-9 items-center gap-2 rounded-pill border border-line bg-surface px-3 text-sm text-muted transition-colors hover:bg-surface-hover sm:w-56"
           >
             <Search className="size-4" />
-            <span className="hidden sm:inline">{t.header.search}</span>
-            <kbd className="ml-auto hidden items-center gap-0.5 rounded-md border border-line px-1.5 py-0.5 text-[10px] sm:flex">
-              ⌘K
+            <span className="hidden sm:inline">{t.header.search} </span>
+            <kbd className="ml-auto hidden justify-center items-center gap-0.5 rounded-md py-0.5 border border-line px-1.5 text-[10px] sm:flex">
+              <span>⌘</span> 
+              <span>K</span>
             </kbd>
           </button>
 
