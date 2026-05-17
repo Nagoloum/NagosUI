@@ -10,14 +10,17 @@ export function Logo({
   size = 28,
   className,
   priority,
+  id,
 }: {
   size?: number;
   className?: string;
   priority?: boolean;
+  id?: string;
 }) {
   const dims = { width: size, height: size };
   return (
     <span
+      id={id}
       className={cn(
         "relative inline-block shrink-0 overflow-hidden",
         className,

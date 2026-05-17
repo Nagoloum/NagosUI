@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { MagneticButton } from "@nagos/ui";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import { AnimatedHeading } from "@/components/ui/animated-heading";
 import { useI18n } from "@/components/providers/language-provider";
 
 export function Hero() {
@@ -33,18 +34,11 @@ export function Hero() {
         {t.hero.badge}
       </motion.a>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.05, ease: EASE_OUT_EXPO }}
-        className="max-w-4xl text-center text-5xl font-semibold leading-[1.04] tracking-tight text-fg sm:text-7xl"
-      >
-        {t.hero.titleLead}
-        <span className="bg-linear-to-r from-accent-from via-accent-via to-accent-to bg-clip-text text-transparent">
-          {" "}
-          {t.hero.titleAccent}
-        </span>
-      </motion.h1>
+      <AnimatedHeading
+        lead={t.hero.titleLead}
+        accent={t.hero.titleAccent}
+        className="max-w-4xl text-center text-5xl font-semibold leading-[1.08] tracking-tight sm:text-7xl"
+      />
 
       <motion.p
         initial={{ opacity: 0, y: 24 }}

@@ -51,7 +51,7 @@ export function SiteHeader() {
             href="/"
             className="flex items-center text-base font-semibold tracking-tight text-fg"
           >
-            <Logo size={34} priority className="rounded-lg" />
+            <Logo id="nav-logo" size={34} priority className="rounded-lg" />
             <div className="flex gap-0.5 text-3xl">
               agos<span className="text-accent">UI</span>
             </div>
