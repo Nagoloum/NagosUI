@@ -49,11 +49,11 @@ export function SiteHeader() {
           {/* Brand */}
           <a
             href="/"
-            className="flex items-center gap-2 text-base font-semibold tracking-tight text-fg"
+            className="flex items-center text-base font-semibold tracking-tight text-fg"
           >
-            <Logo size={28} priority className="rounded-lg" />
-            <div className="flex gap-0.5">
-              Nagos<span className="text-accent">UI</span>
+            <Logo size={34} priority className="rounded-lg" />
+            <div className="flex gap-0.5 text-3xl">
+              agos<span className="text-accent">UI</span>
             </div>
           </a>
 
@@ -78,8 +78,8 @@ export function SiteHeader() {
           >
             <Search className="size-4" />
             <span className="hidden sm:inline">{t.header.search} </span>
-            <kbd className="ml-auto hidden h-5 items-center justify-center rounded-md border border-line px-1.5 text-[10px] leading-none sm:inline-flex">
-              ⌘K
+            <kbd className="ml-auto hidden h-5 items-center justify-center rounded-md border border-line px-1.5 text-[12px] leading-none sm:inline-flex">
+              Ctrl-K
             </kbd>
           </button>
 
