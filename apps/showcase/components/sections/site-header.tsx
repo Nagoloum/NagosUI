@@ -78,9 +78,8 @@ export function SiteHeader() {
           >
             <Search className="size-4" />
             <span className="hidden sm:inline">{t.header.search} </span>
-            <kbd className="ml-auto hidden justify-center items-center gap-0.5 rounded-md py-0.5 border border-line px-1.5 text-[10px] sm:flex">
-              <span>⌘</span> 
-              <span>K</span>
+            <kbd className="ml-auto hidden h-5 items-center justify-center rounded-md border border-line px-1.5 text-[10px] leading-none sm:inline-flex">
+              ⌘K
             </kbd>
           </button>
 
