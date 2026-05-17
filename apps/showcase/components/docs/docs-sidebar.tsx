@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BookOpen } from "lucide-react";
 import { cn } from "@nagos/ui";
 import { DOCS_NAV, docHref, docTitle } from "@/lib/docs";
 import type { Lang } from "@/lib/i18n";
@@ -15,7 +16,8 @@ export function DocsSidebar({
 }) {
   return (
     <nav aria-label="Documentation" className="text-sm">
-      <p className="mb-3 pl-4 text-xs font-medium uppercase tracking-wide text-muted">
+      <p className="mb-3 flex items-center gap-2 pl-4 text-xs font-medium uppercase tracking-wide text-muted">
+        <BookOpen className="size-4 text-accent" />
         {docsUi[lang].section}
       </p>
       <ul className="border-l border-line">
