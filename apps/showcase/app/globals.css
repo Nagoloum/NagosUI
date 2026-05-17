@@ -6,17 +6,39 @@
 /* Modèle registry : scanne les classes des composants @nagos/ui. */
 @source "../../../packages/ui/src/**/*.{ts,tsx}";
 
-html,
-body {
+html {
   background-color: var(--color-bg);
-  color: var(--color-fg);
+  transition: background-color 0.4s var(--ease-out-expo);
 }
 
-/* Transition douce lors du switch de thème. */
 body {
-  transition:
-    background-color 0.4s var(--ease-out-expo),
-    color 0.4s var(--ease-out-expo);
+  color: var(--color-fg);
+  transition: color 0.4s var(--ease-out-expo);
+}
+
+/* Ambiance accent cinématique, theme-aware, derrière tout le contenu. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      60vw 55vw at 50% -12%,
+      color-mix(in oklab, var(--color-accent) var(--nagos-ambient), transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      42vw 42vw at 100% 0%,
+      color-mix(
+        in oklab,
+        var(--color-accent-to) calc(var(--nagos-ambient) * 0.55),
+        transparent
+      ),
+      transparent 64%
+    );
+  transition: background 0.4s var(--ease-out-expo);
 }
 
 /* Recommandé par Lenis pour le smooth scroll. */

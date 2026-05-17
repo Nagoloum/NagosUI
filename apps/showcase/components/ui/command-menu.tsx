@@ -12,6 +12,7 @@ import {
   Sparkles,
   SunMedium,
 } from "lucide-react";
+import { useI18n } from "@/components/providers/language-provider";
 
 type CommandMenuProps = {
   open: boolean;
@@ -20,23 +21,17 @@ type CommandMenuProps = {
 
 const GITHUB_URL = "https://github.com/Nagoloum/NagosUI";
 
-function scrollToId(id: string) {
-  document
-    .getElementById(id)
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 /**
  * Palette de recherche ⌘K (cmdk) — overlay glass animé (Motion).
- * Navigation interne, liens, actions de thème.
+ * Navigation interne, liens, actions de thème. Bilingue (i18n).
  */
 export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
+  const { t } = useI18n();
   const { setTheme } = useTheme();
 
   const run = useCallback(
     (action: () => void) => {
       onOpenChange(false);
-      // laisse l'overlay se fermer avant l'action
       window.setTimeout(action, 80);
     },
     [onOpenChange],
@@ -66,7 +61,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         >
           <button
             type="button"
-            aria-label="Fermer"
+            aria-label="Close"
             onClick={() => onOpenChange(false)}
             className="absolute inset-0 bg-bg/60 backdrop-blur-sm"
           />
@@ -86,7 +81,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                 <Search className="size-4 shrink-0 text-muted" />
                 <Command.Input
                   autoFocus
-                  placeholder="Rechercher un composant, une section…"
+                  placeholder={t.command.placeholder}
                   className="h-13 w-full bg-transparent text-sm text-fg outline-none placeholder:text-muted"
                 />
                 <kbd className="hidden rounded-md border border-line px-1.5 py-0.5 text-[10px] text-muted sm:block">
@@ -96,42 +91,50 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
 
               <Command.List className="max-h-80 overflow-y-auto p-2">
                 <Command.Empty className="py-10 text-center text-sm text-muted">
-                  Aucun résultat.
+                  {t.command.empty}
                 </Command.Empty>
 
-                <Command.Group heading="Navigation">
+                <Command.Group heading={t.command.groupNav}>
                   <Item
-                    onSelect={() => run(() => scrollToId("composants"))}
+                    onSelect={() =>
+                      run(() => {
+                        window.location.href = "/composants";
+                      })
+                    }
                     icon={<Component className="size-4" />}
-                    label="Composants"
+                    label={t.command.composants}
                   />
                   <Item
-                    onSelect={() => run(() => scrollToId("features"))}
+                    onSelect={() =>
+                      run(() => {
+                        window.location.href = "/#features";
+                      })
+                    }
                     icon={<Sparkles className="size-4" />}
-                    label="Pourquoi NagosUI"
+                    label={t.command.why}
                   />
                 </Command.Group>
 
-                <Command.Group heading="Thème">
+                <Command.Group heading={t.command.groupTheme}>
                   <Item
                     onSelect={() => run(() => setTheme("light"))}
                     icon={<SunMedium className="size-4" />}
-                    label="Passer en clair"
+                    label={t.command.toLight}
                   />
                   <Item
                     onSelect={() => run(() => setTheme("dark"))}
                     icon={<Moon className="size-4" />}
-                    label="Passer en sombre"
+                    label={t.command.toDark}
                   />
                 </Command.Group>
 
-                <Command.Group heading="Liens">
+                <Command.Group heading={t.command.groupLinks}>
                   <Item
                     onSelect={() =>
                       run(() => window.open(GITHUB_URL, "_blank"))
                     }
                     icon={<Code2 className="size-4" />}
-                    label="GitHub"
+                    label={t.command.github}
                   />
                 </Command.Group>
               </Command.List>
