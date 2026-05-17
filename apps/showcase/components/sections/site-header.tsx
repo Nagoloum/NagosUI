@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Code2, Search } from "lucide-react";
 import { cn } from "@nagos/ui";
-import { Logo } from "@/components/ui/logo";
+import { Brand } from "@/components/ui/brand";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageToggle } from "@/components/ui/language-toggle";
 import { CommandMenu } from "@/components/ui/command-menu";
@@ -49,12 +49,11 @@ export function SiteHeader() {
           {/* Brand */}
           <a
             href="/"
-            className="flex items-center text-base font-semibold tracking-tight text-fg"
+            id="nav-brand"
+            aria-label="NagosUI"
+            className="inline-flex rounded-pill outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
           >
-            <Logo id="nav-logo" size={34} priority className="rounded-lg" />
-            <div className="flex gap-0.5 text-3xl">
-              agos<span className="text-accent">UI</span>
-            </div>
+            <Brand logoId="nav-logo" />
           </a>
 
           {/* Nav */}

@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useAnimate } from "motion/react";
-import { Logo } from "@/components/ui/logo";
+import { Brand } from "@/components/ui/brand";
 
 const SEEN_KEY = "nagos-intro";
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /**
- * Intro de la landing : logo plein écran (reveal masque + scale + blur +
- * glow) puis vol/réduction jusqu'à l'emplacement du logo dans la nav.
+ * Intro de la landing : marque NagosUI plein écran (reveal masque +
+ * scale + flou + glow) puis vol/réduction jusqu'au lockup de la nav.
+ * Le composant <Brand> est partagé => le morph se cale au pixel près.
  * Joué une fois par session ; respecte prefers-reduced-motion.
  */
 export function IntroOverlay() {
@@ -30,17 +31,22 @@ export function IntroOverlay() {
 
     (async () => {
       const root = scope.current as HTMLElement | null;
-      const logo = root?.querySelector(
-        "[data-intro-logo]",
+      const brand = root?.querySelector(
+        "[data-intro-brand]",
       ) as HTMLElement | null;
-      if (!root || !logo) return;
+      if (!root || !brand) return;
+
+      // Taille naturelle (identique à la marque de la nav)
+      const from = brand.getBoundingClientRect();
+      const desired = Math.min(window.innerWidth * 0.62, 460);
+      const big = from.width ? desired / from.width : 5;
 
       // 1. Reveal : balayage (masque) + scale + flou qui se lève
       await animate(
-        logo,
+        brand,
         {
           opacity: [0, 1],
-          scale: [0.82, 1],
+          scale: [big * 0.82, big],
           filter: ["blur(16px)", "blur(0px)"],
           clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
         },
@@ -50,17 +56,16 @@ export function IntroOverlay() {
       await new Promise((r) => setTimeout(r, 320));
       if (cancelled) return;
 
-      // 2. Vol + réduction jusqu'au logo de la nav
-      const navLogo = document.getElementById("nav-logo");
-      if (navLogo) {
-        const from = logo.getBoundingClientRect();
-        const to = navLogo.getBoundingClientRect();
+      // 2. Vol + réduction jusqu'au lockup de la nav
+      const navEl = document.getElementById("nav-brand");
+      if (navEl) {
+        const to = navEl.getBoundingClientRect();
         const dx = to.left + to.width / 2 - (from.left + from.width / 2);
         const dy = to.top + to.height / 2 - (from.top + from.height / 2);
-        const s = to.width / from.width;
+        const target = from.width ? to.width / from.width : 1;
         await animate(
-          logo,
-          { x: dx, y: dy, scale: s },
+          brand,
+          { x: dx, y: dy, scale: target },
           { duration: 0.85, ease: EASE },
         );
       }
@@ -82,14 +87,17 @@ export function IntroOverlay() {
   return (
     <div
       ref={scope}
-      className="fixed inset-0 z-[200] grid place-items-center bg-bg"
+      className="fixed inset-0 z-200 grid place-items-center bg-bg"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute size-[60vh] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-accent)_40%,transparent),transparent_60%)] blur-3xl"
+        className="pointer-events-none absolute size-[60vh] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-accent)_38%,transparent),transparent_60%)] blur-3xl"
       />
-      <div data-intro-logo className="will-change-transform">
-        <Logo size={160} priority className="rounded-2xl" />
+      <div
+        data-intro-brand
+        className="origin-center opacity-0 will-change-transform"
+      >
+        <Brand />
       </div>
     </div>
   );

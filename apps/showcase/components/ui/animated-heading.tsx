@@ -59,15 +59,6 @@ export function AnimatedHeading({
           {w2 < accentWords.length - 1 ? " " : null}
         </Fragment>
       ))}
-
-      {/* balayage shimmer après l'arrivée des lettres */}
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(105deg,transparent_42%,color-mix(in_oklab,var(--color-fg)_32%,transparent)_50%,transparent_58%)]"
-        initial={{ x: "-120%", opacity: 0 }}
-        animate={{ x: "120%", opacity: [0, 1, 1, 0] }}
-        transition={{ delay: i * STEP + 0.2, duration: 1.15, ease: "easeInOut" }}
-      />
     </h1>
   );
 }
