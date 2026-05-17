@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Code2, Search } from "lucide-react";
 import { cn } from "@nagos/ui";
+import { Logo } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { CommandMenu } from "@/components/ui/command-menu";
 
@@ -45,14 +45,7 @@ export function SiteHeader() {
             href="#top"
             className="flex items-center gap-2 text-base font-semibold tracking-tight text-fg"
           >
-            <Image
-              src="/logo.png"
-              alt="NagosUI"
-              width={28}
-              height={28}
-              priority
-              className="rounded-lg brightness-0 dark:brightness-100"
-            />
+            <Logo size={28} priority className="rounded-lg" />
             <div className="gap-0.5 flex">
               Nagos<span className="text-accent">UI</span>
             </div>
